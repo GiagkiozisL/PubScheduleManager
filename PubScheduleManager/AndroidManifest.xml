@@ -29,6 +29,8 @@
         </activity>
         <activity android:name="com.stonesoup.MainActivity" >
         </activity>
+        <activity android:name="com.stonesoup.ScheduleActivity" >
+        </activity>
     </application>
 
 </manifest>

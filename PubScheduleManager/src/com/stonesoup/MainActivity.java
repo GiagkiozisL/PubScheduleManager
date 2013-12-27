@@ -2,10 +2,14 @@ package com.stonesoup;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.parse.ParseAnalytics;
@@ -17,14 +21,33 @@ import com.stonesoup.AddUserDialog.EditNameDialogListener;
 public class MainActivity extends FragmentActivity implements EditNameDialogListener{
 
 	private String userName,passWord;
+	private Button scheduleBtn,meetingBtn;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
 		//track statistics around application opens
 		ParseAnalytics.trackAppOpened(getIntent());
 		setContentView(R.layout.activity_main);
+		
+		scheduleBtn = (Button) findViewById(R.id.scheduleBtn);
+		scheduleBtn.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent schedule = new Intent(MainActivity.this,ScheduleActivity.class);
+				startActivity(schedule);
+			}
+		});
+		
+		meetingBtn = (Button) findViewById(R.id.meetingBtn);
+		meetingBtn.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+			//create a meeting //propably frgment-dialog with a date picker
+			}
+		});
 		
 	}
 	

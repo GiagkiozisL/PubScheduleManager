@@ -9,6 +9,7 @@ package com.stonesoup;
 
 public final class R {
     public static final class array {
+        public static final int position=0x7f070001;
         public static final int situation=0x7f070000;
     }
     public static final class attr {
@@ -78,12 +79,12 @@ public final class R {
     }
     public static final class id {
         public static final int ImageView01=0x7f0a000b;
-        public static final int action_settings=0x7f0a0014;
+        public static final int action_settings=0x7f0a0015;
         public static final int addBtn=0x7f0a0004;
         public static final int addPassword=0x7f0a0003;
-        public static final int addUser=0x7f0a0015;
+        public static final int addUser=0x7f0a0016;
         public static final int addUsername=0x7f0a0002;
-        public static final int btnSubmit=0x7f0a0013;
+        public static final int btnSubmit=0x7f0a0014;
         public static final int cancelBtn=0x7f0a0005;
         public static final int datePicker1=0x7f0a0010;
         public static final int farmName=0x7f0a000a;
@@ -96,6 +97,7 @@ public final class R {
         public static final int settingsSubmitBtn=0x7f0a000d;
         public static final int spinner1=0x7f0a0011;
         public static final int spinner2=0x7f0a0012;
+        public static final int spinner3=0x7f0a0013;
         public static final int textValue2=0x7f0a0007;
         public static final int textViewProgress=0x7f0a000f;
         public static final int usernameEditTxt=0x7f0a0009;
@@ -118,6 +120,7 @@ public final class R {
         public static final int cancel=0x7f060007;
         public static final int hello_world=0x7f060002;
         public static final int password=0x7f060005;
+        public static final int position_promt=0x7f060009;
         public static final int situation_promt=0x7f060008;
         public static final int username=0x7f060004;
     }

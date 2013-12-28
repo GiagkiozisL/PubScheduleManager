@@ -15,4 +15,14 @@
         <item>Day</item>
         <item>Night</item>
     	 </string-array>
+    	 
+	  <string name="position_promt">Choose a position</string>
+	  <string-array name="position">
+        <item>Bar</item>
+        <item>Service</item>
+        <item>Service 2nd</item>
+        <item>Kitchen</item>
+        <item>Dj</item>
+        <item>PR</item>
+    	 </string-array>
 </resources>

@@ -1,11 +1,10 @@
 package com.stonesoup;
 
-import java.text.DateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 import android.app.Activity;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -29,6 +28,7 @@ public class ScheduleActivity extends Activity{
 	String name,str;
 	Integer day,month,year;
 	Users users;
+	Typeface typeface;
 	int I;
 	Button submitBtn;
 	
@@ -39,19 +39,28 @@ public class ScheduleActivity extends Activity{
 		addItemsOnSpinner2();
 		addItemOnSpinner3();
 		
+		typeface = Typeface.createFromAsset(getAssets(), "Exo-SemiBold.otf");
 		Button submitBtn = (Button) findViewById(R.id.btnSubmit);
+		submitBtn.setTypeface(typeface);
 		submitBtn.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
-				Toast.makeText(ScheduleActivity.this,
+				if (spinner1.getSelectedItem().equals("--Choose a situation--") || spinner3.getSelectedItem().equals("--Choose a position--"))
+				{ 
+					Toast.makeText(ScheduleActivity.this, "You haven't choose one or more fields!\n Please,try again", Toast.LENGTH_SHORT).show();
+				
+				}
+				else {	
+					Toast.makeText(ScheduleActivity.this,
 						"OnClickListener : " + 
 				                "\nSpinner 1 : "+ String.valueOf(spinner1.getSelectedItem()) + 
 				                "\nSpinner 2 : "+ String.valueOf(spinner2.getSelectedItem()) + 
 				                "\nSpinner 3 : "+ String.valueOf(spinner3.getSelectedItem()) + 
 				                "\nDate : "+ String.valueOf(datePicker.getYear()+"-"+datePicker.getMonth()+"-"+datePicker.getDayOfMonth()),
 							Toast.LENGTH_SHORT).show();	
-				createClassWeeklySchedule();
+				createClassWeeklySchedule(); 
+				}
 			}
 
 			private void createClassWeeklySchedule() {

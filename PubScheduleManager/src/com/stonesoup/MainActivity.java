@@ -3,6 +3,7 @@ package com.stonesoup;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
@@ -22,6 +23,7 @@ public class MainActivity extends FragmentActivity implements EditNameDialogList
 
 	private String userName,passWord;
 	private Button scheduleBtn,meetingBtn;
+	Typeface typeface;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -29,8 +31,9 @@ public class MainActivity extends FragmentActivity implements EditNameDialogList
 		//track statistics around application opens
 		ParseAnalytics.trackAppOpened(getIntent());
 		setContentView(R.layout.activity_main);
-		
+		typeface = Typeface.createFromAsset(getAssets(), "Exo-SemiBold.otf");
 		scheduleBtn = (Button) findViewById(R.id.scheduleBtn);
+		scheduleBtn.setTypeface(typeface);
 		scheduleBtn.setOnClickListener(new OnClickListener() {
 			
 			@Override
@@ -41,11 +44,21 @@ public class MainActivity extends FragmentActivity implements EditNameDialogList
 		});
 		
 		meetingBtn = (Button) findViewById(R.id.meetingBtn);
+		meetingBtn.setTypeface(typeface);
 		meetingBtn.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
-			//create a meeting //propably frgment-dialog with a date picker
+			showMeetingDialog();
+			}
+
+			private void showMeetingDialog() {
+				FragmentManager fm = getFragmentManager();
+		        FragmentTransaction ft = fm.beginTransaction();
+		        ft.add(new AddMeetingEventDialog(), "dlg_edit_meeting");
+		        ft.addToBackStack(null);
+		        ft.commit();
+				
 			}
 		});
 		

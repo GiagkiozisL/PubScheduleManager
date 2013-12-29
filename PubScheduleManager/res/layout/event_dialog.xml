@@ -1,0 +1,44 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="#2b2b2b"
+    android:orientation="vertical" >
+    
+     <com.stonesoup.DatePicker
+         android:id="@+id/datePicker1"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content" >
+
+    </com.stonesoup.DatePicker>
+
+    <com.stonesoup.TimePicker
+        android:id="@+id/timePicker2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+    </com.stonesoup.TimePicker>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <Button
+            android:id="@+id/createBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/background_view_rounded_single"
+            android:text="Create"
+            android:textColor="#1facff" />
+
+        <Button
+            android:id="@+id/cancel2Btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/background_view_rounded_single"
+            android:text="Cancel" />
+
+    </LinearLayout>
+
+</LinearLayout>

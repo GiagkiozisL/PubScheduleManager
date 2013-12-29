@@ -46,7 +46,7 @@
         android:layout_width="160dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:background="#5cc4ff"
+        android:background="@drawable/background_view_rounded_blue"
         android:text="Send" />
 
         </LinearLayout>

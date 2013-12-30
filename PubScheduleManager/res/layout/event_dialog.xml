@@ -5,14 +5,14 @@
     android:orientation="vertical" >
     
      <com.stonesoup.DatePicker
-         android:id="@+id/datePicker1"
+         android:id="@+id/dateEvent"
          android:layout_width="wrap_content"
          android:layout_height="wrap_content" >
 
     </com.stonesoup.DatePicker>
 
     <com.stonesoup.TimePicker
-        android:id="@+id/timePicker2"
+        android:id="@+id/timeEvent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" >
 

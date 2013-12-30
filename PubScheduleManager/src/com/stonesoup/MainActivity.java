@@ -15,13 +15,15 @@ import android.widget.Toast;
 
 import com.parse.ParseAnalytics;
 import com.parse.ParseException;
+import com.parse.ParseObject;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
+import com.stonesoup.AddMeetingEventDialog.EditMeetingDialogListener;
 import com.stonesoup.AddUserDialog.EditNameDialogListener;
 
-public class MainActivity extends FragmentActivity implements EditNameDialogListener{
+public class MainActivity extends FragmentActivity implements EditNameDialogListener,EditMeetingDialogListener{
 
-	private String userName,passWord;
+	private String userName,passWord,dateStr,timeStr;
 	private Button scheduleBtn,meetingBtn;
 	Typeface typeface;
 	
@@ -111,5 +113,20 @@ public class MainActivity extends FragmentActivity implements EditNameDialogList
 			    }
 			  }
 			});
+	}
+
+	@Override
+	public void onFinishEditMeetingDialog(String date, String time) {
+		FragmentManager fm = getFragmentManager();
+        fm.popBackStack();
+        Toast.makeText(this, "New meeting added succesfully", Toast.LENGTH_SHORT).show();
+        dateStr = date.toString();
+        timeStr = time.toString();
+	
+		ParseObject meeting = new ParseObject("Meetings");
+		meeting.put("date", dateStr);
+		meeting.put("time", timeStr);
+		meeting.saveInBackground();
+		
 	}
 }

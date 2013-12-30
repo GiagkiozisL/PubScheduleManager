@@ -60,7 +60,7 @@ public class AddUserDialog extends DialogFragment implements OnEditorActionListe
 			
 			@Override
 			public void onClick(View v) {
-		String	user =	usernameEdit.getText().toString();
+		String user = usernameEdit.getText().toString();
 		String pass = passwordEdit.getText().toString();
 				if (user != null || pass != null)
 					Toast.makeText(getActivity(), "You did not enter a username", Toast.LENGTH_SHORT).show();

@@ -113,7 +113,7 @@ public class MainActivity extends FragmentActivity implements EditNameDialogList
 			    }
 			  }
 			});
-	}
+		}
 
 	@Override
 	public void onFinishEditMeetingDialog(String date, String time) {

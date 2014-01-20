@@ -25,6 +25,7 @@ public class AddUserDialog extends DialogFragment implements OnEditorActionListe
 	private EditText usernameEdit,passwordEdit;
 	private Button addBtn,cancelBtn;
 	static Typeface typeface;
+
 	//constructor
 	public AddUserDialog() { }
 	
@@ -44,14 +45,15 @@ public class AddUserDialog extends DialogFragment implements OnEditorActionListe
 			public boolean onKey(View v, int keyCode, KeyEvent event) {
 				if ((event.getAction() == KeyEvent.ACTION_DOWN)
                         && (keyCode == KeyEvent.KEYCODE_ENTER)) {
-                    // Perform action on key press
-                    EditNameDialogListener activity = (EditNameDialogListener) getActivity();
+				
+                   
+					EditNameDialogListener activity = (EditNameDialogListener) getActivity();
                     activity.onFinishEditDialog(usernameEdit.getText().toString(), passwordEdit.getText().toString());
-                    // EditNameDialog.this.dismiss();
-                    return true;
+                   return true;
                 }
                 return false;
             }
+
 		});
        
         addBtn = (Button) view.findViewById(R.id.createBtn);

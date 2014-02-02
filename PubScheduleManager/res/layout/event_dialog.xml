@@ -4,19 +4,19 @@
     android:background="#2b2b2b"
     android:orientation="vertical" >
     
-     <com.stonesoup.DatePicker
+     <com.stonesoup.Manager.DatePicker
          android:id="@+id/dateEvent"
          android:layout_width="wrap_content"
          android:layout_height="wrap_content" >
 
-    </com.stonesoup.DatePicker>
+    </com.stonesoup.Manager.DatePicker>
 
-    <com.stonesoup.TimePicker
+    <com.stonesoup.Manager.TimePicker
         android:id="@+id/timeEvent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" >
 
-    </com.stonesoup.TimePicker>
+    </com.stonesoup.Manager.TimePicker>
 
     <LinearLayout
         android:layout_width="match_parent"

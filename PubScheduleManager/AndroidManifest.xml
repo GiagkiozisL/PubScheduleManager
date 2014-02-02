@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.stonesoup"
+    package="com.stonesoup.Manager"
     android:versionCode="1"
     android:versionName="1.0" >
 
@@ -23,16 +23,16 @@
   to match your app's package name + ".permission.C2D_MESSAGE".
 -->
 	<permission android:protectionLevel="signature"
-	    android:name="com.stonesoup.permission.C2D_MESSAGE" />
-	<uses-permission android:name="com.stonesoup.permission.C2D_MESSAGE" />
+	    android:name="com.stonesoup.Manager.permission.C2D_MESSAGE" />
+	<uses-permission android:name="com.stonesoup.Manager.permission.C2D_MESSAGE" />
 	
     <application
         android:allowBackup="true"
-        android:icon="@drawable/anemos2"
+        android:icon="@drawable/anemosmanager3"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.stonesoup.StartupActivity"
+            android:name="com.stonesoup.Manager.StartupActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -40,11 +40,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.stonesoup.RegistrationActivity" >
+        <activity android:name="com.stonesoup.Manager.RegistrationActivity" >
         </activity>
-        <activity android:name="com.stonesoup.MainActivity" >
+        <activity android:name="com.stonesoup.Manager.MainActivity" >
         </activity>
-        <activity android:name="com.stonesoup.ScheduleActivity" >
+        <activity android:name="com.stonesoup.Manager.ScheduleActivity" >
         </activity>
         <service android:name="com.parse.PushService" />
 <receiver android:name="com.parse.ParseBroadcastReceiver">

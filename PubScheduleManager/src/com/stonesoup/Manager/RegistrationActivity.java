@@ -26,7 +26,7 @@ public class RegistrationActivity extends Activity{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.registration);
 		typeface = Typeface.createFromAsset(getAssets(), "Exo-SemiBold.otf");
-		user = (TextView) findViewById(R.id.username);
+		user = (TextView) findViewById(R.id.usernametxt);
 		user.setTypeface(typeface);
 		pass = (TextView) findViewById(R.id.password);
 		pass.setTypeface(typeface);
@@ -37,11 +37,7 @@ public class RegistrationActivity extends Activity{
 			
 			@Override
 			public void onClick(View v) {
-			
-				//just for naw , move on and take me to main
-				
-//				Intent main  = new Intent(RegistrationActivity.this, MainActivity.class);
-//				startActivity(main);
+		
 				final String username = userEditText.getText().toString();
                 String password = passEditText.getText().toString();
 

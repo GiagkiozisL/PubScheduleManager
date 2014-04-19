@@ -2,10 +2,10 @@ package com.stonesoup.Manager;
 
 public class WorldPopulation {
     private String username;
-//    private String country;
-//    private String population;
-//    private String flag;
- 
+    private String date;
+    private String job;
+    private String situation;
+    
     public String getUsername() {
         return username;
     }
@@ -14,27 +14,27 @@ public class WorldPopulation {
         this.username = username;
     }
  
-//    public String getCountry() {
-//        return country;
-//    }
-// 
-//    public void setCountry(String country) {
-//        this.country = country;
-//    }
-// 
-//    public String getPopulation() {
-//        return population;
-//    }
-// 
-//    public void setPopulation(String population) {
-//        this.population = population;
-//    }
-// 
-//    public String getFlag() {
-//        return flag;
-//    }
-// 
-//    public void setFlag(String flag) {
-//        this.flag = flag;
-//    }
+    public String getDate() {
+        return date;
+    }
+ 
+    public void setDate(String date) {
+        this.date = date;
+    }
+ 
+    public String getJob() {
+        return job;
+    }
+ 
+    public void setJob(String job) {
+        this.job = job;
+    }
+
+	public String getSituation() {
+		return situation;
+	}
+
+	public void setSituation(String situation) {
+		this.situation = situation;
+	}
 }

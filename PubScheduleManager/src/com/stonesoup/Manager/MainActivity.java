@@ -29,7 +29,7 @@ import com.stonesoup.Manager.AddUserDialog.EditNameDialogListener;
 public class MainActivity extends FragmentActivity implements EditNameDialogListener,EditMeetingDialogListener{
 
 	private String userName,passWord,dateStr,timeStr;
-	private Button scheduleBtn,meetingBtn;
+	private Button scheduleBtn,meetingBtn,userlistBtn,eventlistBtn,calendarBtn;
 	Typeface typeface;
 	
 	@Override
@@ -48,6 +48,30 @@ public class MainActivity extends FragmentActivity implements EditNameDialogList
 			public void onClick(View v) {
 				Intent schedule = new Intent(MainActivity.this,ScheduleActivity.class);
 				startActivity(schedule);
+			}
+		});
+		
+		userlistBtn = (Button) findViewById(R.id.userlistBtn);
+		userlistBtn.setTypeface(typeface);
+		userlistBtn.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent userlist = new Intent(MainActivity.this,Userlist.class);
+				startActivity(userlist);
+				
+			}
+		});
+		
+		eventlistBtn = (Button) findViewById(R.id.evenlistBtn);
+		eventlistBtn.setTypeface(typeface);
+		eventlistBtn.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent eventlist = new Intent(MainActivity.this,Eventlist.class);
+				startActivity(eventlist);
+				
 			}
 		});
 		

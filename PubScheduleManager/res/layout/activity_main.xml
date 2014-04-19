@@ -1,9 +1,10 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    android:layout_width="fill_parent"
     android:layout_height="match_parent"
     android:background="#2b2b2b"
     android:gravity="center_horizontal"
+    android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
@@ -12,20 +13,46 @@
 
     <Button
         android:id="@+id/scheduleBtn"
-        android:layout_width="200dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/background_view_rounded_single"
-        android:text="Schedule" />
+        android:layout_weight="1"
+        android:background="@drawable/background_view_rounded_single1"
+        android:text="@string/schedule" />
 
     <Button
         android:id="@+id/meetingBtn"
-        android:layout_width="200dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/scheduleBtn"
-        android:layout_below="@+id/scheduleBtn"
-        android:layout_marginTop="52dp"
-        android:background="@drawable/background_view_rounded_single"
-        android:text="Create a meeting" />
+        android:layout_weight="1"
+        android:background="@drawable/background_view_rounded_single2"
+        android:text="@string/meeting"
+        android:textColor="#ff0080" />
 
-</RelativeLayout>
+    <Button
+        android:id="@+id/userlistBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@drawable/background_view_rounded_single3"
+        android:text="@string/userlist"
+        android:textColor="#ffffa8" />
+
+    <Button
+        android:id="@+id/evenlistBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@drawable/background_view_rounded_single4"
+        android:text="@string/eventlist"
+        android:textColor="#66ccff" />
+
+    <Button
+        android:id="@+id/calendarBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@drawable/background_view_rounded_single5"
+        android:text="@string/calendar"
+        android:textColor="#ffffa8" />
+
+</LinearLayout>

@@ -4,17 +4,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ListView;
 
-import com.parse.FindCallback;
 import com.parse.ParseException;
-import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
+
 
 
 public class UserList extends Activity {
@@ -92,6 +97,52 @@ public class UserList extends Activity {
 			listview.setAdapter(userAdapter);
 			// Close the progressdialog
 			mProgressDialog.dismiss();
+			////HEREEEEEEEEEEEEEEEEEEEEE
+			listview.setOnItemLongClickListener(new OnItemLongClickListener() {
+	            // setting onItemLongClickListener and passing the position to the function
+	                      @Override
+	            public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
+	                    int position, long arg3) {
+	                removeItemFromList(position);   
+	                
+	                return true;
+	            }
+	        });
+		}
+	// method to remove list item
+	    protected void removeItemFromList(int position) {
+	        final int deletePosition = position;
+	        
+	        AlertDialog.Builder alert = new AlertDialog.Builder(
+	                UserList.this);
+	    
+	        alert.setTitle("Delete");
+	        alert.setMessage("Do you want delete this item?");
+	        alert.setPositiveButton("YES", new OnClickListener() {
+	            @Override
+	            public void onClick(DialogInterface dialog, int which) {	              
+             	               
+//	            	ParseUser user = ParseUser.delet
+//	            	user.deleteInBackground();
+	                    // main code on after clicking yes
+	                    ob.remove(deletePosition);
+	                    userAdapter.notifyDataSetChanged();
+	                    userAdapter.notifyDataSetInvalidated();
+	      
+	            }
+	        });
+	        alert.setNegativeButton("CANCEL", new OnClickListener() {
+	            @Override
+	            public void onClick(DialogInterface dialog, int which) {
+	                dialog.dismiss();
+	            }
+	        });
+	      
+	        alert.show();
+	      
+	    }
+			/////TO THERE
+			
 		}
 	}
-	}
+	

@@ -31,9 +31,7 @@ public class UserListViewAdapter extends BaseAdapter{
 	}
 
 	public class ViewHolder {
-	//	TextView date;
 		TextView username;
-	//	TextView job;
 	}
 	
 	@Override

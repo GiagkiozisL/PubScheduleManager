@@ -25,6 +25,7 @@ import com.parse.ParseUser;
 
 public class ScheduleActivity extends Activity{
 
+	List<ParseUser> userOb;
 	List<ParseObject> ob;
 	List<String> n = new ArrayList<String>();
 	private Spinner spinner1,spinner2,spinner3;
@@ -35,8 +36,7 @@ public class ScheduleActivity extends Activity{
 	Typeface typeface;
 	int I;
 	Button submitBtn;
-	
-//	ListView listview;
+
 	Spinner spinner;
 	String INTTAG;
     
@@ -47,28 +47,9 @@ public class ScheduleActivity extends Activity{
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
-//		final ParseQuery<ParseUser> query = ParseUser.getQuery();
-//		query.orderByAscending("username");
-//		query.findInBackground(new FindCallback<ParseUser>() {
-//		  public void done(List<ParseUser> objects, ParseException e) {
-//		    if (e == null) {
-//		    	
-//		    	ParseQuery fewWins = new ParseQuery("User");
-//	            fewWins.addAscendingOrder("username");
-//		    	
-//		    	query.addAscendingOrder("username");
-//		    	Log.d("TAG", query.toString());
-//		    	
-//		    	Log.d("TAG2", fewWins.toString());
-//		        // The query was successful.
-//		    } else {
-//		        // Something went wrong.
-//		    }
-//		  }
-//		});
-		
+
 		setContentView(R.layout.schedule_activity);
+		addItemOnSpinner1();
 		addItemsOnSpinner2();
 		addItemOnSpinner3();
 		new RemoteDataTask().execute();
@@ -79,7 +60,7 @@ public class ScheduleActivity extends Activity{
 			
 			@Override
 			public void onClick(View v) {
-				if (spinner1.getSelectedItem().equals("--Choose a situation--") || spinner3.getSelectedItem().equals("--Choose a position--"))
+				if (spinner1.getSelectedItem().equals("--Choose a situation--") || spinner3.getSelectedItem().equals("--Choose a person--") || spinner3.getSelectedItem().equals("--Choose a position--"))
 				{ 
 					Toast.makeText(ScheduleActivity.this, "You haven't choose one or more fields!\n Please,try again", Toast.LENGTH_SHORT).show();
 				
@@ -99,53 +80,59 @@ public class ScheduleActivity extends Activity{
 			private void createClassWeeklySchedule() {
 				ParseObject weeklyProgram = new ParseObject("Program");
 				weeklyProgram.put("situation", spinner1.getSelectedItem());
-		//		weeklyProgram.put("name", spinner2.getSelectedItem());
 				weeklyProgram.put("position", spinner3.getSelectedItem());
 				weeklyProgram.put("date",datePicker.getDayOfMonth()+"/"+datePicker.getMonth()+"/"+datePicker.getYear());
+				weeklyProgram.put("username",spinner2.getSelectedItem());
 				weeklyProgram.saveInBackground();
 				
 			}
 		});
 	}
 	
-	private void addItemOnSpinner3() {
-		//we can also add drop down list items dynamically as in addItemsOnSpinner2
+	private void addItemOnSpinner1() {
+
+		spinner2 = (Spinner) findViewById(R.id.spinner2);
+		
+		List<String> userlist = new ArrayList<String>();
+		userlist.add("--Choose a person--");
+		ParseQuery<ParseUser> query = ParseUser.getQuery();
+		//query.orderByAscending("createdAt");
+		query.whereNotEqualTo("objectId", "whatever");
+		try {
+			userOb = query.find();
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		for (ParseUser user : userOb) {
+			
+			WorldPopulation map = new WorldPopulation();
+			map.setUsername((String) user.get("username"));
+			Log.i("USER:::", map.getUsername());
+			
+			userlist.add(map.getUsername());
+			Log.i("USER2:::", userlist.toString());
+		}
+		
+		ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
+				android.R.layout.simple_spinner_item, userlist);
+			dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+			spinner2.setAdapter(dataAdapter);
+			spinner2.setPrompt("--Choose a person--");
 	}
+
+	
+	private void addItemOnSpinner3() {}
 
 	public void addItemsOnSpinner2() {
 
-		
-//		ParseQuery<ParseObject> query  = ParseQuery.getQuery("User");
-//		query.whereNotEqualTo("username", "whatever");
-//        query.findInBackground(new FindCallback<ParseObject>() {
-//            @Override
-//            public void done(List<ParseObject> parseObjects, com.parse.ParseException e) {
-//                if (e==null){
-//
-//                    Log.d("THE OBJECT", "" +parseObjects.size());
-//
-//
-//                    name =  parseObjects.toString();
-//                    Log.d("THE QUERY ", "" + name);
-//
-//                } else {
-//                    Log.d("ERROR:", "" + e.getMessage());
-//                }
-//            }
-//        });
+
 		spinner1 = (Spinner) findViewById(R.id.spinner1);
 		spinner3 = (Spinner) findViewById(R.id.spinner3);
 		datePicker = (DatePicker) findViewById(R.id.datePicker1);
-		 
-		spinner2 = (Spinner) findViewById(R.id.spinner2);
-		List<String> list = new ArrayList<String>();
-		 
-		list.add(name);
-		
-		ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,list);
-		dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-		spinner2.setAdapter(dataAdapter);
+
 	}
+	
 	// RemoteDataTask AsyncTask
     private class RemoteDataTask extends AsyncTask<Void, Void, Void> {
         @Override
@@ -193,13 +180,13 @@ public class ScheduleActivity extends Activity{
         @Override
         protected void onPostExecute(Void result) {
             // Locate the listview in listview_main.xml
-            spinner = (Spinner) findViewById(R.id.spinner2);
+        //    spinner = (Spinner) findViewById(R.id.spinner2);
             // Pass the results into ListViewAdapter.java
             adapter = new ParseQueryAdapter<ParseObject>();
 //            		ListViewAdapter(ScheduleActivity.this,
 //                    worldpopulationlist);
             // Binds the Adapter to the ListView
-            spinner.setAdapter(adapter);
+     //       spinner.setAdapter(adapter);
             // Close the progressdialog
             mProgressDialog.dismiss();
         }

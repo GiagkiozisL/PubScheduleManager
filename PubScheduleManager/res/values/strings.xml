@@ -11,7 +11,7 @@
     <string name="date">Date</string>
     <string name="name">Name</string>
     <string name="job">Job</string>
-    
+    <string name="spinner2promt">"--Choose a person--"</string>
     <string name="calendar">Calendar</string>
     <string name="meeting">Create a meeting</string>
     <string name="username">Enter new usename</string>

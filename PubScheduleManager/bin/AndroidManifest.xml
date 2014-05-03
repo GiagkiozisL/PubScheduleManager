@@ -42,9 +42,9 @@
         </activity>
         <activity android:name="com.stonesoup.Manager.ScheduleActivity" >
         </activity>
-        <activity android:name="com.stonesoup.Manager.Userlist" >
+        <activity android:name="com.stonesoup.Manager.EventsList" >
         </activity>
-        <activity android:name="com.stonesoup.Manager.Eventlist" >
+        <activity android:name="com.stonesoup.Manager.UserList" >
         </activity>
         <activity android:name="com.stonesoup.Manager.Calendar" >
         </activity>

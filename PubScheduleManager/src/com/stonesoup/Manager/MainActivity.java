@@ -57,7 +57,7 @@ public class MainActivity extends FragmentActivity implements EditNameDialogList
 			
 			@Override
 			public void onClick(View v) {
-				Intent userlist = new Intent(MainActivity.this,Userlist.class);
+				Intent userlist = new Intent(MainActivity.this,UserList.class);
 				startActivity(userlist);
 				
 			}
@@ -69,7 +69,7 @@ public class MainActivity extends FragmentActivity implements EditNameDialogList
 			
 			@Override
 			public void onClick(View v) {
-				Intent eventlist = new Intent(MainActivity.this,Eventlist.class);
+				Intent eventlist = new Intent(MainActivity.this,EventsList.class);
 				startActivity(eventlist);
 				
 			}

@@ -26,7 +26,7 @@ public class RegistrationActivity extends Activity{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.registration);
 		typeface = Typeface.createFromAsset(getAssets(), "Exo-SemiBold.otf");
-		user = (TextView) findViewById(R.id.usernametxt);
+		user = (TextView) findViewById(R.id.usernametxt2);
 		user.setTypeface(typeface);
 		pass = (TextView) findViewById(R.id.password);
 		pass.setTypeface(typeface);

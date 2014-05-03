@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/relLayout"
+    android:layout_width="fill_parent"
+    android:layout_height="200dp" >
+
+    <LinearLayout
+        android:id="@+id/linearr"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/day7"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/datetxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="DATE"
+            android:textColor="#fff710"
+            android:textSize="24sp" />
+
+        <LinearLayout
+            android:id="@+id/linearr2"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:id="@+id/imageworker"
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:src="@drawable/wairtress" />
+
+            <TextView
+                android:id="@+id/usernametxt"
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:gravity="left|center_vertical"
+                android:text="ONOMA"
+                android:textColor="#FFFFFF"
+                android:textSize="30sp" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/jobtxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="JOB"
+            android:textColor="#fff710"
+            android:textSize="24sp" />
+
+    </LinearLayout>
+
+</RelativeLayout>

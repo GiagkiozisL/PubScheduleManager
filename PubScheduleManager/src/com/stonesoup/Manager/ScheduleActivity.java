@@ -30,8 +30,8 @@ public class ScheduleActivity extends Activity{
 	List<String> n = new ArrayList<String>();
 	private Spinner spinner1,spinner2,spinner3;
 	private DatePicker datePicker;
-	String name,str;
-	Integer day,month,year;
+	String name,str,finalDay,finalDate;
+	Integer day,month,year,finalMonth,finalYear;
 	Users users;
 	Typeface typeface;
 	int I;
@@ -49,9 +49,9 @@ public class ScheduleActivity extends Activity{
 		super.onCreate(savedInstanceState);
 
 		setContentView(R.layout.schedule_activity);
-		addItemOnSpinner1();
+		addItemsOnSpinner1();
 		addItemsOnSpinner2();
-		addItemOnSpinner3();
+		addItemsOnSpinner3();
 		new RemoteDataTask().execute();
 		typeface = Typeface.createFromAsset(getAssets(), "Exo-SemiBold.otf");
 		Button submitBtn = (Button) findViewById(R.id.btnSubmit);
@@ -73,15 +73,34 @@ public class ScheduleActivity extends Activity{
 				                "\nSpinner 3 : "+ String.valueOf(spinner3.getSelectedItem()) + 
 				                "\nDate : "+ String.valueOf(datePicker.getYear()+"-"+datePicker.getMonth()+"-"+datePicker.getDayOfMonth()),
 							Toast.LENGTH_SHORT).show();	
+					
+					finalYear = Integer.valueOf(datePicker.getYear() - 2000);
+					if (datePicker.getDayOfMonth() <10)
+					{
+						finalDay = String.valueOf("0"+datePicker.getDayOfMonth()); 
+					}
+					else {finalDay = String.valueOf(datePicker.getDayOfMonth());}
+					
+					finalMonth = Integer.valueOf(datePicker.getMonth()+1);
+					
+					if (finalMonth <10)
+					{
+						finalDate = String.valueOf(finalDay+"/"+"0"+finalMonth+"/"+finalYear);
+					}
+					else
+						finalDate = String.valueOf(finalDay+"/"+finalMonth+"/"+finalYear);
+					
 				createClassWeeklySchedule(); 
 				}
 			}
 
 			private void createClassWeeklySchedule() {
+				
 				ParseObject weeklyProgram = new ParseObject("Program");
 				weeklyProgram.put("situation", spinner1.getSelectedItem());
 				weeklyProgram.put("position", spinner3.getSelectedItem());
-				weeklyProgram.put("date",datePicker.getDayOfMonth()+"/"+datePicker.getMonth()+"/"+datePicker.getYear());
+				weeklyProgram.put("date",finalDate);
+				//weeklyProgram.put("date",datePicker.getDayOfMonth()+"/"+datePicker.getMonth()+"/"+datePicker.getYear());
 				weeklyProgram.put("username",spinner2.getSelectedItem());
 				weeklyProgram.saveInBackground();
 				
@@ -89,7 +108,7 @@ public class ScheduleActivity extends Activity{
 		});
 	}
 	
-	private void addItemOnSpinner1() {
+	private void addItemsOnSpinner2() {
 
 		spinner2 = (Spinner) findViewById(R.id.spinner2);
 		
@@ -121,14 +140,12 @@ public class ScheduleActivity extends Activity{
 			spinner2.setPrompt("--Choose a person--");
 	}
 
-	
-	private void addItemOnSpinner3() {}
+	private void addItemsOnSpinner3() { 
+		spinner3 = (Spinner) findViewById(R.id.spinner3); 
+		}
 
-	public void addItemsOnSpinner2() {
-
-
+	public void addItemsOnSpinner1() {
 		spinner1 = (Spinner) findViewById(R.id.spinner1);
-		spinner3 = (Spinner) findViewById(R.id.spinner3);
 		datePicker = (DatePicker) findViewById(R.id.datePicker1);
 
 	}
@@ -179,15 +196,7 @@ public class ScheduleActivity extends Activity{
  
         @Override
         protected void onPostExecute(Void result) {
-            // Locate the listview in listview_main.xml
-        //    spinner = (Spinner) findViewById(R.id.spinner2);
-            // Pass the results into ListViewAdapter.java
-            adapter = new ParseQueryAdapter<ParseObject>();
-//            		ListViewAdapter(ScheduleActivity.this,
-//                    worldpopulationlist);
-            // Binds the Adapter to the ListView
-     //       spinner.setAdapter(adapter);
-            // Close the progressdialog
+        	adapter = new ParseQueryAdapter<ParseObject>();
             mProgressDialog.dismiss();
         }
     }
